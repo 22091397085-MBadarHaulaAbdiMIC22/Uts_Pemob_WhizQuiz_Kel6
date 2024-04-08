@@ -1,4 +1,4 @@
-# idcard
+# WhizQuizz
 
 A new Flutter project.
 
