@@ -1,4 +1,4 @@
-name: idcard
+name: WhizQuizz
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -63,6 +63,8 @@ flutter:
     - IMG/fotobalya.png
     - IMG/fotohaula.png
     - IMG/fotopuspita.png
+    - IMG/bgfixx.png
+    - IMG/logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

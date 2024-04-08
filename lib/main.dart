@@ -1,121 +1,83 @@
+import 'package:WhizQuizz/Models/QuestionList.dart';
+import 'package:WhizQuizz/Owner.dart';
 import 'package:flutter/material.dart';
 
+
+
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Color.fromRGBO(200, 22, 70, 140),
-        appBar: AppBar(
-          title: Text(
-            'Kartu Nama',
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Colors.black45,
-          centerTitle: true,
-        ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              buildCard(
-                name: 'M. Badar Haula Abdi',
-                idInfo: '22091397085 / UI/UX Designer',
-                phone: '081334712470',
-                email: 'abdidensus@gmail.com',
-                imagePath: 'IMG/fotohaula.png',
-              ),
-              buildCard(
-                name: 'Nur Puspita Amalia',
-                idInfo: '22091397093 / Data Scientist',
-                phone: '083857694858',
-                email: 'puspita01@gmail.com',
-                imagePath: 'IMG/fotopuspita.png',
-              ),
-              buildCard(
-                name: 'Ahmad Balya D',
-                idInfo: '22091397095 / Web Developer',
-                phone: '081358024205',
-                email: 'balya@gmail.com',
-                imagePath: 'IMG/fotobalya.png',
-              ),
-            ],
-          ),
-        ),
-      ),
+      title: 'Halaman Utama',
+      home: HomePage(),
     );
   }
+}
 
-  Widget buildCard({required String name, required String idInfo, required String phone, required String email, required String imagePath}) {
-    return Column(
-      children: [
-        SizedBox(height: 20),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          padding: EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            radius: 45,
-            backgroundImage: AssetImage(imagePath),
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.teal[300],
+        title: Text('🎊 SELAMAT DATANG 🎊',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+
           ),
         ),
-        SizedBox(height: 10),
-        Text(
-          name,
-          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+        centerTitle: true,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("IMG/bgfixx.png"),
+            fit: BoxFit.cover,
+          ),
         ),
-        Text(
-          idInfo,
-          style: TextStyle(color: Colors.lightBlueAccent, fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 2),
-        ),
-        SizedBox(height: 10),
-        Row(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Card(
-              color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Icon(Icons.phone, color: Colors.black),
-                    SizedBox(width: 10.0),
-                    Text(
-                      phone,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0, color: Colors.black),
-                    ),
-                  ],
-                ),
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            // Logo di tengah
+            Center(
+              child: Image.asset(
+                'IMG/logo.png',
+                width: 300, // Sesuaikan ukuran logo
+                height: 250,
               ),
             ),
-            Card(
-              color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Icon(Icons.email, color: Colors.black),
-                    SizedBox(width: 10.0),
-                    Text(
-                      email,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0, color: Colors.black),
-                    ),
-                  ],
-                ),
-              ),
+            SizedBox(height: 10.0), // Jarak antara logo dan tombol
+            // Tombol Start Quiz
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => QuizPage()),
+                );
+              },
+              child: Text('Start Quiz'),
+            ),
+            SizedBox(height: 10.0), // Jarak antara tombol
+            // Tombol Tentang Kita
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                );
+              },
+              child: Text('Tentang Kita'),
             ),
           ],
         ),
-      ],
+      ),
     );
   }
 }
